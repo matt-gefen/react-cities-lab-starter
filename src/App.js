@@ -7,18 +7,30 @@ import imagesArr from "./imageData";
 export default function App() {
   // USE useState TO CREATE  [bigImage, setBigImage]
   const [bigImage, setBigImage] = useState(imagesArr[0].img)
+  const [smallImage, setSmallImage] = useState(0)
+  
+  const active = {
+    border: "lightgreen solid 2px"
+  }
+  const inactive = {
+    border: "0"
+  }
   // AND SET IT TO THE IMAGE URL OF THE FIRST ELEMENT IN THE ARRAY
   
   // CREATE A HANDLE CLICK FUNCTION THAT ACCEPTS AN IMAGE URL
-  const handleClick = (imgUrl) => {
+  const handleClick = (imgUrl, key) => {
     setBigImage(imgUrl)
+    console.log(images[smallImage].props.className )
+    // images[smallImage].props.className = 'thumb'
+    setSmallImage(key)
+    // images[smallImage].props.className = 'thumb selected'
   }
   // THE FUNCTION SHOULD CALL setBigImage AND PASS IT THE URL
 
   // CREATE A VARIABLE CALLED images THAT LOOPs OVER THE imagesArr AND RETURNS AN <IMG> ELEMENT
 
   const images = imagesArr.map((element, index) => {
-    return <img src={element.img} alt={element.city} key={index} className='thumb' onClick={() => handleClick(element.img)}/>
+    return <img src={element.img} alt={element.city} key={index} className={index === smallImage ? 'thumb selected' : 'thumb'} onClick={() => handleClick(element.img, index)}/>
   })
 
   // ASSIGN ALL OF THE PROPERTIES THAT IT NEEDS: src, alt, className, key
