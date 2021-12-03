@@ -18,7 +18,7 @@ export default function App() {
   // CREATE A VARIABLE CALLED images THAT LOOPs OVER THE imagesArr AND RETURNS AN <IMG> ELEMENT
 
   const images = imagesArr.map((element, index) => {
-    return <img src={element.img} alt={element.city} key={index} className='thumb' onClick={handleClick}/>
+    return <img src={element.img} alt={element.city} key={index} className='thumb' onClick={() => handleClick(element.img)}/>
   })
 
   // ASSIGN ALL OF THE PROPERTIES THAT IT NEEDS: src, alt, className, key
@@ -30,7 +30,7 @@ export default function App() {
       <div id="wrapper">
         <div id="thumbnails">{/* RENDER THE IMAGES ARRAY  */}{images}</div>
         {/* THE SRC IMAGE URL SHOULD BE SET TO THE VALUE THAT IS STORED IN bigImage */}
-        {/* <img src="" id="bigimage" alt='bigImaage'/> */}
+        <img src={bigImage} id="bigimage" alt='bigImaage'/>
       </div>
     </div>
   );
