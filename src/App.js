@@ -20,7 +20,6 @@ export default function App() {
   // CREATE A HANDLE CLICK FUNCTION THAT ACCEPTS AN IMAGE URL
   const handleClick = (imgUrl, key) => {
     setBigImage(imgUrl)
-    console.log(images[smallImage].props.className )
     // images[smallImage].props.className = 'thumb'
     setSmallImage(key)
     // images[smallImage].props.className = 'thumb selected'
@@ -33,6 +32,10 @@ export default function App() {
     return <img src={element.img} alt={element.city} key={index} className={index === smallImage ? 'thumb selected' : 'thumb'} onClick={() => handleClick(element.img, index)}/>
   })
 
+  // const images = imagesArr.map((image, idx) => {
+  //   return <img className={`thumb ${idx === smallImage ? "selected" : ""}`} src={image.img} alt={image.city} key={idx} onClick={() => handleClick(image.img, idx)}/>
+  // })
+  
   // ASSIGN ALL OF THE PROPERTIES THAT IT NEEDS: src, alt, className, key
   // ALSO ASSIGN AN onClick EVENT THAT CALL THE HANDLE EVENT AND PASSES IT THE IMG URL
 
